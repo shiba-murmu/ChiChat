@@ -32,7 +32,7 @@ function Login() {
         <>
             <div className='flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center gap-3'>
-                    <div className='mb-5'>
+                    <div className='mb-3'>
                         <span className='text-5xl font-extrabold'>ChiChat</span>
                     </div>
                     <UserForm />
