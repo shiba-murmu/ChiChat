@@ -17,7 +17,7 @@ function UserForm() {
                 </div>
 
                 <div>
-                    <p>Don't have an account?<a href="" className='text-blue-600'>Sign up</a></p>
+                    <p>Don't have an account?<a href="" className='text-blue-600'> Sign up</a></p>
                 </div>
 
 
