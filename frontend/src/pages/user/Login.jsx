@@ -19,8 +19,6 @@ function UserForm() {
                 <div>
                     <p>Don't have an account?<a href="" className='text-blue-600'> Sign up</a></p>
                 </div>
-
-
             </form>
         </>
     )
@@ -28,6 +26,14 @@ function UserForm() {
 
 
 function Login() {
+    /**
+     * In this code the login form is created.
+     * 
+     * @returns JSX
+     * 
+     * Ok through this function it calls another function UserForm.
+     * as a components to create the login form..
+     */
     return (
         <>
             <div className='flex justify-center items-center h-screen'>
