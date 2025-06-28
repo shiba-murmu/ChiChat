@@ -43,8 +43,8 @@ function Login() {
             <div className='flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center gap-3'>
                     <div className='mb-3 style-font'>
-                        <span className='text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Chi</span>
-                        <span className='text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Chat</span>
+                        <span className='text-5xl font-extrabold '>Chi</span>
+                        <span className='text-5xl font-extrabold '>Chat</span>
                     </div>
                     <UserForm />
                 </div>

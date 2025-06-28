@@ -17,8 +17,7 @@ body {
 .style-font {
   /* font-family: "Savate", sans-serif; */
   /* This is the font-style for particular text */
-  font-family: "Savate", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
+  font-family: "Emilys Candy", serif;
+  font-weight: 400;
   font-style: normal;
 }
