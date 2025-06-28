@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function UserForm() {
     return (
         <>
@@ -17,7 +17,11 @@ function UserForm() {
                 </div>
 
                 <div>
-                    <p>Don't have an account?<a href="" className='text-blue-600'> Sign up</a></p>
+                    <p>Don't have an account? <Link to="/register" className='text-blue-600'>Sign up</Link></p>
+                </div>
+
+                <div className='text-center'>
+                    <p><a href="" className='text-blue-600'>Forgot password?</a></p>
                 </div>
             </form>
         </>
