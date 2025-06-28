@@ -2,15 +2,23 @@
 
 /* [data-theme="dark"], [data-theme="dark"] * {
   /* Add your dark theme styles here */
-/* } */ 
+/* } */
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
 
 body {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-  }
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.style-font {
+  /* font-family: "Savate", sans-serif; */
+  /* This is the font-style for particular text */
+  font-family: "Savate", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}

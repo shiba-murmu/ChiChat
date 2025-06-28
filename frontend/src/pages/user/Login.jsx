@@ -6,18 +6,18 @@ function UserForm() {
             <form action="" className='flex flex-col gap-6'>
                 <div>
                     {/* <label htmlFor="email">Email</label> */}
-                    <input type="email" name="email" id="email" className='border rounded w-60 h-10 pl-3' placeholder='Email, phone or username' />
+                    <input type="email" name="email" id="email" className='border border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3 ' placeholder='Email, phone or username' />
                 </div>
                 <div>
                     {/* <label htmlFor="password">Password</label> */}
-                    <input type="password" name="password" id="password" className='rounded border h-10 w-60 pl-3' placeholder='Password'/>
+                    <input type="password" name="password" id="password" className='rounded border border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Password'/>
                 </div>
                 <div>
-                    <button type="submit" className='border w-60 h-10 text-xl font-semibold place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-400 text-white'>Login</button>
+                    <button type="submit" className='border w-60 h-10 text-xl font-semibold place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-400 text-white'>Sign in</button>
                 </div>
 
                 <div>
-                    <p>Don't have an account? <Link to="/register" className='text-blue-600'>Sign up</Link></p>
+                    <p>Don't have an account? <Link to="/register" className='text-blue-600 font-bold'>Sign up</Link></p>
                 </div>
 
                 <div className='text-center'>
@@ -42,8 +42,9 @@ function Login() {
         <>
             <div className='flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center gap-3'>
-                    <div className='mb-3'>
-                        <span className='text-5xl font-extrabold'>ChiChat</span>
+                    <div className='mb-3 style-font'>
+                        <span className='text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Chi</span>
+                        <span className='text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Chat</span>
                     </div>
                     <UserForm />
                 </div>
