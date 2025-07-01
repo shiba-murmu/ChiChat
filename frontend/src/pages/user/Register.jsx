@@ -18,13 +18,13 @@ function Register() {
     return (
         <>
             {/* User registration form to create the account of the user. */}
-            <div className='flex justify-center flex-col items-center h-[auto] bg-gray-100 w-full'>
+            <div className='flex justify-center flex-col items-center h-[auto]  w-full'>
                 <div className='flex justify-center items-center '>
                     <img src="https://img.icons8.com/color/48/000000/chat.png" alt="chat-icon" className='w-20 m-0 h-20' />
                 </div>
                 <form action="" className='flex flex-col gap-5'>
                     <div className='flex justify-center flex-col items-center'>
-                        <p>Sign up to your ChiChat <span className='font-bold text-blue-500'>account</span> </p>
+                        <p>Sign up to your <span className='font-bold'>ChiChat</span> <span className='font-bold text-blue-500'>account</span> </p>
                         <p>to chat with your friends</p>
                     </div>
                     <div>
@@ -60,7 +60,7 @@ function Register() {
                                 </svg>
                                 // eye icon 
                             ) : (
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
                                 </svg>
                                 // eye-off icon by default it shows the eye off icon
@@ -95,16 +95,17 @@ function Register() {
                     </div>
                 </form>
 
-                <div className='flex flex-col gap-3 p-10 w-80'>
+                <div className='md:relative flex flex-col p-10 gap-3'>
                     <hr className='border-gray-400' />
                     <p className='text-center'>Or sign up with</p>
-                    <div className='flex justify-center items-center gap-3'>
-                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google" className='w-10 h-10' />
-                        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="facebook" className='w-10 h-10' />
+                    <div className='flex justify-center items-center gap-3'> 
+                        <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google" className='w-10 h-10 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:coursor-pointer' />
+                        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="facebook" className='w-10 h-10 hover:scale-110 hover: transition ease-in-out delay-150 hover:-translate-y-1  duration-300 hover:coursor-pointer' />
                     </div>
                     <p className='text-center'>By signing up, you agree to our <Link to="/terms" className='text-blue-500 font-extrabold'>Terms of Service</Link> and <Link to="/privacy" className='text-blue-500 font-extrabold'>Privacy Policy</Link>.</p>
                 </div>
             </div>
+               
         </>
     )
 }
