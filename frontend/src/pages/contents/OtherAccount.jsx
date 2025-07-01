@@ -39,16 +39,22 @@ function OtherAccount() {
                         </div>
                     </div>
                 </div>
-                <div className='flex justify-center items-center gap-5 p-4'>
-                    for user details
+                <div className='flex justify-center items-center text-sm  gap-5 p-4'>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos.</p>
                 </div>
-                <div className='bg-amber-200 p-4'>
-                    for user contents
-                </div>
-                <div>
-                    <button>Button 1</button>
-                    <button>Button 2</button>
-                    <button>Button 3</button>
+                <div className='flex justify-center items-center gap-3 p-4'>
+                    <button className='bg-gray-200 px-4 py-2 rounded'>
+                        <span className='text-gray-800 hover:text-blue-600'>Follow</span>
+                    </button>
+                    <button className='bg-gray-200 px-4 py-2 rounded'>
+                        <span className='text-gray-800 hover:text-blue-600'>Message</span>
+                    </button>
+                    <button className='bg-gray-200 px-4 py-2 rounded'>
+                        <span className='text-gray-800 hover:text-blue-600'>Report</span>
+                    </button>
+                    <button className='bg-gray-200 px-4 py-2 rounded'>
+                        <span className='text-gray-800 hover:text-blue-600'>View Other Account</span>
+                    </button>
                 </div>
             </div>
         </>

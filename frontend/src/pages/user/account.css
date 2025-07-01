@@ -1,0 +1,9 @@
+.background-dark {
+    /* This is custom css used for dark and blurry mode in the background */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  position: fixed;
+  transition: background-color 0.3s ease-in-out;
+  inset: 0;
+}
