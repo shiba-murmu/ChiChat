@@ -39,6 +39,10 @@ function UserForm() {
                 <div>
                     <p>Don't have an account? <Link to="/register" className='text-blue-600 font-bold'>Sign up</Link></p>
                 </div>
+                <div>
+                    <p>Account show for develop <Link to="/account" className='text-blue-600 font-bold'>User</Link></p>
+                </div>
+
 
                 <div className='text-center'>
                     <p><a href="" className='text-blue-600'>Forgot password?</a></p>

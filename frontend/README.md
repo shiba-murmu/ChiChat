@@ -14,3 +14,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - descriptions for resources used here..
 - font is used from [ google fonts ]
 - icons is from [ heroicons ]
+
+- New : 
+- follow -> Wave
+- followe -> Buddies
