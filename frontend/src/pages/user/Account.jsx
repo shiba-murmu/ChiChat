@@ -83,7 +83,7 @@ function Account() {
 
     return (
         <>
-            <div>
+            <div className='min-h-screen w-full max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden'>
                 {/* Header */}
                 <div className='flex justify-between items-center p-1'>
                     <div className='flex items-center'>

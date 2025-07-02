@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from '../../components/navbar/Navbar'
 function Chat() {
   return (
     <>
-        <Navbar />
+    <div className='min-h-screen w-full max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden'>
+
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Chat Page</h1>
             <p>Welcome to the chat section!</p>
@@ -14,6 +14,7 @@ function Chat() {
         <footer className="mt-4 text-center">
             <p className="text-gray-600">© 2023 Chat Application</p>
         </footer>
+    </div>
     </>
   )
 }

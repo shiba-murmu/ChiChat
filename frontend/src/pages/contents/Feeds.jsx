@@ -35,13 +35,11 @@ function FeedsCard() {
 function Feeds() {
     return (
         <>
-            <Navbar />
             <div>
                 < FeedsCard />
                 < FeedsCard />
                 < FeedsCard />
             </div>
-            < Taskbar />
         </>
     )
 }
