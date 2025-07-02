@@ -4,6 +4,9 @@ import Login from './pages/user/Login'
 import Register from './pages/user/Register'
 import Account from './pages/user/Account'
 import OtherAccount from './pages/contents/OtherAccount'
+import Feeds from './pages/contents/Feeds'
+import Chat from './pages/contents/Chat'
+// import Navbar from './components/navbar/Navbar'
 
 function App() {
   return (
@@ -13,6 +16,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<Account />} />
         <Route path="/otheraccount" element={<OtherAccount />} />
+        <Route path="/feeds" element={<Feeds />} />
+        <Route path="/chat" element={<Chat />} />
+        {/* <Route path="/navbar" element={<Navbar />} /> */}
       </Routes>
     </Router>
   )

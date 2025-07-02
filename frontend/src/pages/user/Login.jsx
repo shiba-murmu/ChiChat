@@ -42,6 +42,9 @@ function UserForm() {
                 <div>
                     <p>Account show for develop <Link to="/account" className='text-blue-600 font-bold'>User</Link></p>
                 </div>
+                <div>
+                    <p>Feeds show for develop <Link to="/feeds" className='text-blue-600 font-bold'>Feeds</Link></p>
+                </div>
 
 
                 <div className='text-center'>

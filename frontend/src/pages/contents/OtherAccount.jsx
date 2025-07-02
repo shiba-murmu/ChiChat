@@ -1,60 +1,59 @@
 import React from 'react'
 
 
-
+import { Link } from 'react-router-dom'
 
 function OtherAccount() {
     return (
         <>
             <div>
-                {/* Main div */}
-                <div className='flex justify-center items-center gap-5 h-auto p-3'>
-                    {/* User profile section */}
-                    <div className='w-[30%] flex justify-center items-center '>
-                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D" alt=""
-                            className='rounded-full border-2 border-white shadow-lg object-cover w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 2xl:w-56 2xl:h-56'
+
+                {/* Profile Section */}
+                <div className='flex justify-center md:flex-col items-center gap-5 px-3'>
+                    <div className='w-[30%] md:w-[100%] flex justify-center'>
+                        <img
+                            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000"
+                            alt="Profile"
+                            className='rounded-full border-2 shadow-lg object-cover w-24 h-24
+                                         md:w-40 md:h-40'
                             loading='lazy'
                         />
-                        {/* image container may shrink in future if the user name is too long */}
                     </div>
+                    <div className='w-[70%] md:w-[100%]'>
+                        <div className='mb-2 md:text-center'>
+                            <span className='font-bold text-md'>Shiba Murmu</span>
+                        </div>
+                        <div className='flex gap-5 md:justify-center'>
+                            <div className='flex flex-col'>
+                                <span className='font-bold text-center text-sm md:text-md'>20</span>
+                                <span className='text-center text-sm md:text-md'>Posts</span>
+                            </div>
+                            <div className='flex flex-col'>
+                                <span className='font-bold text-center text-sm md:text-md'>100</span>
+                                <span className='text-center text-sm md:text-md'>Followers</span>
+                            </div>
+                            <div className='flex flex-col'>
+                                <span className='font-bold text-center text-sm md:text-md'>30</span>
+                                <span className='text-center text-sm md:text-md'>Following</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <div className='w-[70%] '>
-                        <div className='flex flex-col justify-center items-start mb-2'>
-                            {/* User name and username */}
-                            <span className='font-bold text-md'>John Doe</span>
-                        </div>
-                        <div className='flex  items-start gap-5'>
-                            <div className='flex flex-col'>
-                                <span className='font-bold text-center text-sm'>20</span>
-                                <span className='text-center text-sm'>Posts</span>
-                            </div>
-                            <div className='flex flex-col'>
-                                <span className='font-bold text-center text-sm'>100</span>
-                                <span className='text-center text-sm'>Followers</span>
-                            </div>
-                            <div className='flex flex-col'>
-                                <span className='font-bold text-center text-sm'>30</span>
-                                <span className='text-center text-sm'>Following</span>
-                            </div>
-                        </div>
-                    </div>
+                <div className='flex justify-start md:justify-center'>
+                    <p className='text-sm px-3 text-gray-500'>@shibamurmu_</p>
                 </div>
-                <div className='flex justify-center items-center text-sm  gap-5 p-4'>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos.</p>
+                <div className='flex justify-start md:justify-center'>
+                    <p className='text-sm  px-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos</p>
                 </div>
-                <div className='flex justify-center items-center gap-3 p-4'>
+
+
+                <div className='flex gap-3 p-4 md:justify-center'>
                     <button className='bg-gray-200 px-4 py-2 rounded'>
-                        <span className='text-gray-800 hover:text-blue-600'>Follow</span>
+                        <Link to="/otheraccount" className='text-gray-800 hover:text-blue-600'>View Other Account</Link>
                     </button>
-                    <button className='bg-gray-200 px-4 py-2 rounded'>
-                        <span className='text-gray-800 hover:text-blue-600'>Message</span>
-                    </button>
-                    <button className='bg-gray-200 px-4 py-2 rounded'>
-                        <span className='text-gray-800 hover:text-blue-600'>Report</span>
-                    </button>
-                    <button className='bg-gray-200 px-4 py-2 rounded'>
-                        <span className='text-gray-800 hover:text-blue-600'>View Other Account</span>
-                    </button>
+                    <button className='bg-gray-200 px-4 py-2 rounded'>Button 2</button>
+                    <button className='bg-gray-200 px-4 py-2 rounded'>Button 3</button>
                 </div>
             </div>
         </>
@@ -62,3 +61,7 @@ function OtherAccount() {
 }
 
 export default OtherAccount
+
+
+
+

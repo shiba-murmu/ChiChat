@@ -85,7 +85,7 @@ function Account() {
         <>
             <div>
                 {/* Header */}
-                <div className='flex justify-between items-center p-2'>
+                <div className='flex justify-between items-center p-1'>
                     <div className='flex items-center'>
                         <UserIcon />
                         <UserName />
@@ -99,52 +99,55 @@ function Account() {
                 </div>
 
                 {/* Profile Section */}
-                <div className='flex justify-center items-center gap-5 p-3'>
-                    <div className='w-[30%] flex justify-center'>
+                <div className='flex justify-center md:flex-col items-center gap-5 px-3'>
+                    <div className='w-[30%] md:w-[100%] flex justify-center'>
                         <img
                             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000"
                             alt="Profile"
-                            className='rounded-full border-2 shadow-lg object-cover w-24 h-24 md:w-32 md:h-32'
+                            className='rounded-full border-2 shadow-lg object-cover w-24 h-24
+                             md:w-40 md:h-40'
                             loading='lazy'
                         />
                     </div>
-
-                    <div className='w-[70%]'>
-                        <div className='mb-2'>
+                    <div className='w-[70%] md:w-[100%]'>
+                        <div className='mb-2 md:text-center'>
                             <span className='font-bold text-md'>Shiba Murmu</span>
                         </div>
-                        <div className='flex gap-5'>
+                        <div className='flex gap-5 md:justify-center'>
                             <div className='flex flex-col'>
-                                <span className='font-bold text-center text-sm'>20</span>
-                                <span className='text-center text-sm'>Posts</span>
+                                <span className='font-bold text-center text-sm md:text-md'>20</span>
+                                <span className='text-center text-sm md:text-md'>Posts</span>
                             </div>
                             <div className='flex flex-col'>
-                                <span className='font-bold text-center text-sm'>100</span>
-                                <span className='text-center text-sm'>Followers</span>
+                                <span className='font-bold text-center text-sm md:text-md'>100</span>
+                                <span className='text-center text-sm md:text-md'>Followers</span>
                             </div>
                             <div className='flex flex-col'>
-                                <span className='font-bold text-center text-sm'>30</span>
-                                <span className='text-center text-sm'>Following</span>
+                                <span className='font-bold text-center text-sm md:text-md'>30</span>
+                                <span className='text-center text-sm md:text-md'>Following</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className='flex justify-center p-4'>for user details</div>
-                <div className='bg-amber-200 p-4'>for user contents</div>
-                <div className='flex gap-3 p-4'>
-                    <button className='bg-gray-200 px-4 py-2 rounded'>
-                        <Link to="/otheraccount" className='text-gray-800 hover:text-blue-600'>View Other Account</Link>
-                    </button>
-                    <button className='bg-gray-200 px-4 py-2 rounded'>Button 2</button>
-                    <button className='bg-gray-200 px-4 py-2 rounded'>Button 3</button>
+                <div className='flex justify-start md:justify-center'>
+                    <p className='text-sm px-3 text-gray-500'>@shibamurmu_</p>
+                </div>
+                <div className='flex justify-start md:justify-center'>
+                    <p className='text-sm  px-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos</p>
+                </div>
+
+                 {/* <hr /> */}
+                <div className='flex gap-3 p-4 md:justify-center'>
+                    <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200'>Edit Profile</button>
+                    <button className='bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors duration-200'>Settings</button>
                 </div>
             </div>
 
             {/* ⬅️ Drawer Overlay */}
             {isOpen && (
                 <div
-                   onClick={toggleDrawer}
+                    onClick={toggleDrawer}
                     role="presentation"
                     className="fixed inset-0 background-dark bg-opacity-10 z-30"
                 />
