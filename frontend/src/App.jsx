@@ -25,7 +25,8 @@ function App() {
         return location.pathname.startsWith(path);
 
       });
-      console.log("Current Path:", location.pathname);
+    //   console.log("Current Path:", location.pathname); 
+    //   path pattern checking.
     return (
         <>
            
