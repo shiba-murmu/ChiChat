@@ -10,6 +10,7 @@ import Chat from './pages/contents/Chat'
 import Navbar from './components/navbar/Navbar'
 import Taskbar from './components/taskbar/Taskbar'
 import Notifications from './pages/contents/Notifications'
+import Messages from './pages/user/Messages'
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/feeds" element={<Feeds />} />
                 <Route path="/chat" element={<Chat />} />
                 <Route path="/notifications" element={<Notifications />} />
+                <Route path="/messages" element={<Messages />} />
                 {/* <Route path="/navbar" element={<Navbar />} /> */}
             </Routes>
             <Taskbar />
@@ -31,24 +33,3 @@ function App() {
 }
 
 export default App
-
-
-// import React from 'react'
-// import { BrowserRouter as Route, Routes, Router } from 'react-router-dom'
-// import Login from './pages/user/Login'
-// import Register from './pages/user/Register'
-
-// function App() {
-//   return (
-//     <> 
-//         <Router>
-//             <Routes>
-//                 <Route path="/" element={<Login />} />
-//                 <Route path="/register" element={<Register />} />
-//             </Routes>
-//         </Router>
-//     </>
-//   )
-// }
-
-// export default App
