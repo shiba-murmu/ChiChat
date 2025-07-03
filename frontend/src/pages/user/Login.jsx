@@ -33,17 +33,14 @@ function UserForm() {
                     </span>
                 </div>
                 <div>
-                    <button type="submit" className='border w-60 h-10 text-xl font-semibold place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-400 text-white'>Sign in</button>
+                    <Link to="/Feeds">
+                    {/* Here the link tag is added for just testing */}
+                        <button type="submit" className='border w-60 h-10 text-xl font-semibold place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-400 text-white'>Sign in</button>
+                    </Link>
                 </div>
 
                 <div>
                     <p>Don't have an account? <Link to="/register" className='text-blue-600 font-bold'>Sign up</Link></p>
-                </div>
-                <div>
-                    <p>Account show for develop <Link to="/account" className='text-blue-600 font-bold'>User</Link></p>
-                </div>
-                <div>
-                    <p>Feeds show for develop <Link to="/feeds" className='text-blue-600 font-bold'>Feeds</Link></p>
                 </div>
 
 
@@ -57,7 +54,7 @@ function UserForm() {
                 <div className='flex justify-center items-center gap-3'>
                     <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google" className='w-10 h-10' />
                     <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="facebook" className='w-10 h-10' />
-                </div>              
+                </div>
             </div>
         </>
     )
