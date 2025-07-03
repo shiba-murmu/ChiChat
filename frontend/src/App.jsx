@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Login from './pages/user/Login'
@@ -17,12 +18,14 @@ function App() {
     // Paths where Navbar and Taskbar should NOT be shown
     const hideLayoutPaths = ['/', '/register', '/messages', '/chat'];
 
-    const hideLayoutPathsNavbar = ['/account'];
 
     // Check if current path is in the list
-    const shouldHideLayout = hideLayoutPaths.includes(location.pathname);
-    const shouldHideNavbar = hideLayoutPathsNavbar.includes(location.pathname);
+    const shouldHideLayout = hideLayoutPaths.some(path => {
+        if (path === '/') return location.pathname === '/';
+        return location.pathname.startsWith(path);
 
+      });
+      console.log("Current Path:", location.pathname);
     return (
         <>
            

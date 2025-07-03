@@ -15,7 +15,7 @@ function Messages() {
                 <div className='flex justify-between items-center p-1  border-b border-gray-300'>
                     <div className='flex items-center gap-2'>
                         <div className='flex items-center p-3 cursor-pointer'>
-                            <Link to={'/Chat'}>
+                            <Link to={'/chat'}>
                             
                                 <LeftBack />
                             </Link>
