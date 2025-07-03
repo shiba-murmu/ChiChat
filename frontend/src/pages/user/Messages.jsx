@@ -10,6 +10,7 @@ function Messages() {
     return (
         <>
             <div className=' w-full max-w-md mx-auto shadow-lg overflow-hidden'>
+                
                 <div className='flex justify-between items-center p-1  border-b border-gray-300'>
                     <div className='flex items-center gap-2'>
                         <div className='flex items-center p-0.5'>
