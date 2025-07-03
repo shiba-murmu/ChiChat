@@ -1,21 +1,32 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Login from './pages/user/Login'
 import Register from './pages/user/Register'
 import Account from './pages/user/Account'
 import OtherAccount from './pages/contents/OtherAccount'
 import Feeds from './pages/contents/Feeds'
 import Chat from './pages/contents/Chat'
-// import Navbar from './components/navbar/Navbar'
 import Navbar from './components/navbar/Navbar'
 import Taskbar from './components/taskbar/Taskbar'
 import Notifications from './pages/contents/Notifications'
 import Messages from './pages/user/Messages'
 
 function App() {
+
+    const location = useLocation();
+
+    // Paths where Navbar and Taskbar should NOT be shown
+    const hideLayoutPaths = ['/', '/register', '/messages', '/chat'];
+
+    const hideLayoutPathsNavbar = ['/account'];
+
+    // Check if current path is in the list
+    const shouldHideLayout = hideLayoutPaths.includes(location.pathname);
+    const shouldHideNavbar = hideLayoutPathsNavbar.includes(location.pathname);
+
     return (
-        <Router>
-            <Navbar />
+        <>
+            {!shouldHideLayout && !shouldHideNavbar && <Navbar />}
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
@@ -27,8 +38,8 @@ function App() {
                 <Route path="/messages" element={<Messages />} />
                 {/* <Route path="/navbar" element={<Navbar />} /> */}
             </Routes>
-            <Taskbar />
-        </Router>
+            {!shouldHideLayout && <Taskbar />}
+        </>
     )
 }
 

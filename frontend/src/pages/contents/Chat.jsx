@@ -1,16 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function TripleDotIcon() {
-    return (
-        <>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-            </svg>
+import TripleDot from '../../components/triple/TripleDot'
 
-        </>
-    )
-}
+
+
 
 function SpecificUserCard() {
     return (
@@ -35,7 +29,7 @@ function SpecificUserCard() {
                     </Link>
                     <div className='ml-auto flex items-center gap-2'>
                         <button className='text-gray-500 hover:text-gray-800'>
-                            <TripleDotIcon />
+                            <TripleDot />
                         </button>
                     </div>
                 </div>
