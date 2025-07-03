@@ -1,10 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import TripleDot from '../../components/triple/TripleDot'
-
-
-
 
 function SpecificUserCard() {
     return (
@@ -37,6 +33,7 @@ function SpecificUserCard() {
         </>
     )
 }
+
 function Chat() {
     return (
         <>
