@@ -24,7 +24,8 @@ function DrawerOptions({ toggleDrawer }) {
                     </li>
                     <li>
                         {/* <a href="#" className="block p-2 rounded hover:bg-gray-100">Logout</a> */}
-                        <button onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100'>Logout</button>
+                        {/* <button onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100'>Logout</button> */}
+                        <Link to={'/'} onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100 text-red-600'>Logout</Link>
                     </li>
                 </ul>
             </div>
