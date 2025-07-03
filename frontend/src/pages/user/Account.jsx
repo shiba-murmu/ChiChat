@@ -2,6 +2,30 @@ import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './account.css';
+
+function DrawerOptions() {
+    return (
+        <>
+            <div className="p-4">
+                <ul className="space-y-2">
+                    <li>
+                        <a href="#" className="block p-2 rounded hover:bg-gray-100">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#" className="block p-2 rounded hover:bg-gray-100">Edit Profile</a>
+                    </li>
+                    <li>
+                        <a href="#" className="block p-2 rounded hover:bg-gray-100">Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+        </>
+    )
+}
+
+
+
 function AccountNotification() {
     return (
         <>
@@ -13,7 +37,7 @@ function AccountNotification() {
 
 }
 
-function DrawerHide() {
+function DrawerHideIcons() {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8 w-8 h-8 text-gray-600 hover:text-gray-800 cursor-pointer">
@@ -137,7 +161,7 @@ function Account() {
                     <p className='text-sm  px-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos</p>
                 </div>
 
-                 {/* <hr /> */}
+                {/* <hr /> */}
                 <div className='flex gap-3 p-4 md:justify-center'>
                     <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200'>Edit Profile</button>
                     <button className='bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors duration-200'>Settings</button>
@@ -161,23 +185,12 @@ function Account() {
                 <div className="px-4 py-4 flex justify-between bg-gray-100 items-center shadow">
                     <h2 className="text-lg font-semibold">Shiba Murmu</h2>
                     <button onClick={toggleDrawer} className="text-2xl ">
-                        <DrawerHide />
+                        <DrawerHideIcons />
                     </button>
                 </div>
+                <DrawerOptions />
 
-                <div className="p-4">
-                    <ul className="space-y-2">
-                        <li>
-                            <a href="#" className="block p-2 rounded hover:bg-gray-100">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block p-2 rounded hover:bg-gray-100">Edit Profile</a>
-                        </li>
-                        <li>
-                            <a href="#" className="block p-2 rounded hover:bg-gray-100">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </>
     );
