@@ -88,7 +88,7 @@ function Register() {
                         </span>
                     </div>
                     <div>
-                        <button type="submit" className='bg-blue-500 text-white rounded h-10 w-60'>Sign up</button>
+                        <button type="submit" className='bg-blue-500 text-white rounded h-10 w-60 hover:bg-blue-600'>Sign up</button>
                     </div>
                     <div>
                         <p className='text-center'>Already have an account? <Link to="/" className='text-blue-500 font-extrabold'>Login</Link></p>

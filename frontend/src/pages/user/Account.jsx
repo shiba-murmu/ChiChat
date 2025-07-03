@@ -3,23 +3,31 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './account.css';
 
-function DrawerOptions() {
+function DrawerOptions({ toggleDrawer }) {
+    /**
+     * Passing the props to trigger the onClick function of the toggleDrawer function in 
+     * the parent component
+     */
     return (
         <>
             <div className="p-4">
                 <ul className="space-y-2">
                     <li>
-                        <a href="#" className="block p-2 rounded hover:bg-gray-100">Profile</a>
+                        {/* <Link to={'/account'} onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100'>Profile</Link>
+                         */}
+                        <button onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100'>Profile</button>
                     </li>
                     <li>
-                        <a href="#" className="block p-2 rounded hover:bg-gray-100">Edit Profile</a>
+                        {/* <a href="#" className="block p-2 rounded hover:bg-gray-100">Edit Profile</a>
+                         */}
+                         <button onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100'>Edit Profile</button>
                     </li>
                     <li>
-                        <a href="#" className="block p-2 rounded hover:bg-gray-100">Logout</a>
+                        {/* <a href="#" className="block p-2 rounded hover:bg-gray-100">Logout</a> */}
+                        <button onClick={toggleDrawer} className='block p-2 rounded hover:bg-gray-100'>Logout</button>
                     </li>
                 </ul>
             </div>
-
         </>
     )
 }
@@ -188,9 +196,7 @@ function Account() {
                         <DrawerHideIcons />
                     </button>
                 </div>
-                <DrawerOptions />
-
-
+                <DrawerOptions toggleDrawer={toggleDrawer} />
             </div>
         </>
     );
