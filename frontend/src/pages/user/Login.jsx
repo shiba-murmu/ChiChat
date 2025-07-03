@@ -34,13 +34,13 @@ function UserForm() {
                 </div>
                 <div>
                     <Link to="/Feeds">
-                    {/* Here the link tag is added for just testing */}
-                        <button type="submit" className='border w-60 h-10 text-xl font-semibold place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-400 text-white'>Sign in</button>
+                        {/* Here the link tag is added for just testing */}
+                        <button type="submit" className='border w-60 h-10 text-md font-normal place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-500 text-white'>Sign in</button>
                     </Link>
                 </div>
 
                 <div>
-                    <p>Don't have an account? <Link to="/register" className='text-blue-600 font-bold'>Sign up</Link></p>
+                    <p>Don't have an account? <Link to="/register" className='text-blue-600 '>Sign up</Link></p>
                 </div>
 
 
