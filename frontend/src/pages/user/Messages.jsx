@@ -1,8 +1,9 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import TripleDot from '../../components/triple/TripleDot'
 
-
+// import LeftBack from '../../components/leftBack/LeftBack'
+import LeftBack from '../../components/back/LeftBack'
 
 function Messages() {
     // Main function for Messages page
@@ -13,6 +14,12 @@ function Messages() {
                 
                 <div className='flex justify-between items-center p-1  border-b border-gray-300'>
                     <div className='flex items-center gap-2'>
+                        <div className='flex items-center p-3 cursor-pointer'>
+                            <Link to={'/Chat'}>
+                            
+                                <LeftBack />
+                            </Link>
+                        </div>
                         <div className='flex items-center p-0.5'>
                             <img
                                 src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000"
@@ -22,7 +29,7 @@ function Messages() {
                             />
                         </div>
                         <div>
-                            <span className='font-semibold text-base'>Shiba Murmu</span>
+                            <span className='font-normal text-base'>ChiChat user</span>
                         </div>
                     </div>
                     <div className='flex items-center p-1'>

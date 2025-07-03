@@ -34,11 +34,53 @@ function FeedsCard() {
 }
 function Feeds() {
     return (
-        <>
-            <div>
-                < FeedsCard />
-                < FeedsCard />
-                < FeedsCard />
+        <>  
+            {/* Navbar for the Feeds page */}
+            <Navbar />
+            <div className='p-2'>
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                <FeedsCard />
+                {/* Add a button to load more feeds */}
             </div>
         </>
     )

@@ -6,7 +6,6 @@ import Account from './pages/user/Account'
 import OtherAccount from './pages/contents/OtherAccount'
 import Feeds from './pages/contents/Feeds'
 import Chat from './pages/contents/Chat'
-import Navbar from './components/navbar/Navbar'
 import Taskbar from './components/taskbar/Taskbar'
 import Notifications from './pages/contents/Notifications'
 import Messages from './pages/user/Messages'
@@ -26,7 +25,7 @@ function App() {
 
     return (
         <>
-            {!shouldHideLayout && !shouldHideNavbar && <Navbar />}
+           
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
