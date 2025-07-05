@@ -44,12 +44,13 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        // ****** For all validations **************************************
         if (!formData.firstName || !formData.lastName || !formData.userName || !formData.email || !formData.password || !formData.confirmPassword) {
             Failed('All fields are required');
             return;
         }
-
+        // *****************************************************************
+        // ********** UserName Validations *********************************
         if (formData.userName.length < 3) {
             Failed('Username must be at least 3 characters long');
             return;
@@ -64,7 +65,8 @@ function Register() {
             Failed('Invalid username');
             return;
         }
-
+        // *****************************************************************
+        // *********** Password Validations ********************************
         if (formData.password.length < 8) {
             Failed('Password must be at least 8 characters long');
             return;
@@ -74,7 +76,8 @@ function Register() {
             Failed('Passwords do not match');
             return;
         }
-
+        // *****************************************************************
+        // *********** Email Validations ***********************************
         if (!formData.email.trim()) {
             Failed('Email is required');
             return;
@@ -88,7 +91,8 @@ function Register() {
         if (!isValidEmail(formData.email)) {
             Failed('Invalid email address');
             return;
-        }
+        }  
+        // *****************************************************************
 
         console.log(formData);
 
