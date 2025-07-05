@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import axios from 'axios';
+
+import Failed from '../../components/Toast/Failed';
+import Success from '../../components/Toast/Success';
+import isValidEmail from '../../components/Email_valid/EmailValid';
 
 function Register() {
     // Hooks are used to show and hide the password and confirm password.
@@ -40,32 +43,38 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!formData.firstName || !formData.lastName || !formData.userName || !formData.email || !formData.password || !formData.confirmPassword) {
-            toast.error('Please fill in all the fields', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
+            Failed('All fields are required');
             return;
         }
+
+        if (formData.password.length < 8) {
+            Failed('Password must be at least 8 characters long');
+            return;
+        }
+
+
         if (formData.password !== formData.confirmPassword) {
-            toast.error('Passwords do not match', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
+            Failed('Passwords do not match');
             return;
         }
+
+        if (!formData.email.trim()) {
+            Failed('Email is required');
+            return;
+        }
+
+        if (formData.email.includes(' ')) {
+            Failed('Email cannot contain spaces');
+            return;
+        }
+
+        if (!isValidEmail(formData.email)) {
+            Failed('Invalid email address');
+            return;
+        }
+
         console.log(formData);
 
         try {
@@ -76,17 +85,8 @@ function Register() {
             });
             console.log(response.data);
             console.log(response.data.message);
-
-            toast.success(response.data.message, {
-                position: "top-right",
-                autoClose: 4000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
+            Success(response.data.message);
+            
         } catch (error) {
             console.error(error);
         }
@@ -110,8 +110,8 @@ function Register() {
                     <div>
                         <input type="text" name="lastName" onChange={handleChange} id="lastName" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Last name' />
                     </div>
-                    <div>
-                        <input type="text" name="userName" onChange={handleChange} id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' />
+                    <div className='flex flex-col'>
+                        <input type="text" name="userName" onChange={handleChange} id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' /> 
                     </div>
                     <div>
                         <input type="email" name="email" onChange={handleChange} id="email" className='border  border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email address' />
