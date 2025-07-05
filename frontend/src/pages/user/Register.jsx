@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 function Register() {
     // Hooks are used to show and hide the password and confirm password.
@@ -13,8 +15,83 @@ function Register() {
      * password, and confirm password.
      * It also includes functionality to show and hide the password and confirm password fields using hooks.
      */
+
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        userName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!formData.firstName || !formData.lastName || !formData.userName || !formData.email || !formData.password || !formData.confirmPassword) {
+            toast.error('Please fill in all the fields', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            return;
+        }
+        if (formData.password !== formData.confirmPassword) {
+            toast.error('Passwords do not match', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+            return;
+        }
+        console.log(formData);
+
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/user/register/', formData , {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            console.log(response.data);
+            console.log(response.data.message);
+
+            toast.success(response.data.message, {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <>
             {/* User registration form to create the account of the user. */}
@@ -22,22 +99,22 @@ function Register() {
                 <div className='flex justify-center items-center '>
                     <img src="https://img.icons8.com/color/48/000000/chat.png" alt="chat-icon" className='w-20 m-0 h-20' />
                 </div>
-                <form action="" className='flex flex-col gap-5'>
+                <form action="" onSubmit={handleSubmit} className='flex flex-col gap-5'>
                     <div className='flex justify-center flex-col items-center'>
                         <p>Sign up to your <span className='font-bold'>ChiChat</span> <span className='font-bold text-blue-500'>account</span> </p>
                         <p>to chat with your friends</p>
                     </div>
                     <div>
-                        <input type="text" name="firstName" id="firstName" className='rounded border pl-3 border-gray-400 focus:outline-gray-500 h-10 w-60' placeholder='First name' />
+                        <input type="text" name="firstName" onChange={handleChange} id="firstName" className='rounded border pl-3 border-gray-400 focus:outline-gray-500 h-10 w-60' placeholder='First name' />
                     </div>
                     <div>
-                        <input type="text" name="lastName" id="lastName" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Last name' />
+                        <input type="text" name="lastName" onChange={handleChange} id="lastName" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Last name' />
                     </div>
                     <div>
-                        <input type="text" name="username" id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' />
+                        <input type="text" name="userName" onChange={handleChange} id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' />
                     </div>
                     <div>
-                        <input type="email" name="email" id="email" className='border  border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email address' />
+                        <input type="email" name="email" onChange={handleChange} id="email" className='border  border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email address' />
                     </div>
                     {/* Here code used for showing and hiding the password. In the main-container 
                         div the relative class is added first to show the eye icon inside the input field. Also the onClick function is used to show and hide the password. Added hooks are used to show and hide the password.*/}
@@ -45,6 +122,7 @@ function Register() {
                         <input
                             type={showConfirmPassword ? 'text' : 'password'}
                             name="password"
+                            onChange={handleChange}
                             id="password"
                             className="rounded border border-gray-400 focus:outline-gray-500 h-10 w-full pl-3 pr-10"
                             placeholder="Password"
@@ -68,7 +146,7 @@ function Register() {
                         </span>
                     </div>
                     <div className='relative w-60'>
-                        <input type={showPassword ? "text" : "password"} name="confirmPassword" id="confirmPassword" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Confirm Password' />
+                        <input type={showPassword ? "text" : "password"} name="confirmPassword" onChange={handleChange} id="confirmPassword" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Confirm Password' />
                         <span
                             onClick={() => setShowPassword(!showPassword)}
                             className="absolute right-3 top-2.5 cursor-pointer text-gray-500 hover:text-gray-800"
@@ -105,7 +183,6 @@ function Register() {
                     <p className='text-center'>By signing up, you agree to our <Link to="/terms" className='text-blue-500 font-extrabold'>Terms of Service</Link> and <Link to="/privacy" className='text-blue-500 font-extrabold'>Privacy Policy</Link>.</p>
                 </div>
             </div>
-               
         </>
     )
 }

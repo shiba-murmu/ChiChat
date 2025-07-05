@@ -1,6 +1,8 @@
 
 import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/user/Login'
 import Register from './pages/user/Register'
 import Account from './pages/user/Account'
@@ -29,7 +31,7 @@ function App() {
     //   path pattern checking.
     return (
         <>
-           
+           < ToastContainer position='top-right' autoClose={3000} />  
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />

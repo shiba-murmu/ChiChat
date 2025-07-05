@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--m2x@s6nu=s$9!)za%mo=c!ao$l@v#wc!dk4c^gmeg$=n6i)c)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -39,15 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',  # CORS
     'rest_framework',
-    'api',  # My 'api' app
+    'user',  # My 'user' app
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True # react frontend to access the backend API port: 1573
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+]
+
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # CORS
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
