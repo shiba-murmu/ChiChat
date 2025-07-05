@@ -49,6 +49,19 @@ function Register() {
             return;
         }
 
+        if (formData.userName.length < 3) {
+            Failed('Username must be at least 3 characters long');
+            return;
+        }
+
+        if (formData.userName.includes(' ')) {
+            Failed('Username cannot contain spaces');
+            return;
+        }
+
+
+
+
         if (formData.password.length < 8) {
             Failed('Password must be at least 8 characters long');
             return;
