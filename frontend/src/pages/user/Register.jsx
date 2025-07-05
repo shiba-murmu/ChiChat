@@ -6,6 +6,7 @@ import axios from 'axios';
 import Failed from '../../components/Toast/Failed';
 import Success from '../../components/Toast/Success';
 import isValidEmail from '../../components/Email_valid/EmailValid';
+import userNameValid from '../../components/UserName_valid/usernameValid';
 
 function Register() {
     // Hooks are used to show and hide the password and confirm password.
@@ -59,6 +60,10 @@ function Register() {
             return;
         }
 
+        if (!userNameValid(formData.userName)) {
+            Failed('Invalid username');
+            return;
+        }
 
 
 
