@@ -65,13 +65,10 @@ function Register() {
             return;
         }
 
-
-
         if (formData.password.length < 8) {
             Failed('Password must be at least 8 characters long');
             return;
         }
-
 
         if (formData.password !== formData.confirmPassword) {
             Failed('Passwords do not match');
