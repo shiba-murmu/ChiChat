@@ -1,0 +1,38 @@
+{
+    "accessibility.signals.chatEditModifiedFile": {
+        "sound": "on"
+    },
+    "accessibility.signals.chatRequestSent": {
+        "sound": "on"
+    },
+    "accessibility.signals.chatResponseReceived": {
+        "sound": "on"
+    },
+    "accessibility.signals.codeActionApplied": {
+        "sound": "on"
+    },
+    "accessibility.signals.codeActionTriggered": {
+        "sound": "on"
+    },
+    "accessibility.signals.diffLineDeleted": {
+        "sound": "on"
+    },
+    "accessibility.signals.lineHasInlineSuggestion": {
+        "sound": "on"
+    },
+    "accessibility.signals.lineHasWarning": {
+        "sound": "on"
+    },
+    "accessibility.signals.noInlayHints": {
+        "sound": "on"
+    },
+    "accessibility.signals.positionHasError": {
+        "sound": "on"
+    },
+    "accessibility.signals.positionHasWarning": {
+        "sound": "on"
+    },
+    "accessibility.signals.progress": {
+        "sound": "on"
+    }
+}
