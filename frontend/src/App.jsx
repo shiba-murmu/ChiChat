@@ -15,7 +15,14 @@ import Messages from './pages/user/Messages'
 
 import PrivateRoute from './components/Lock/PrivateRoutes';  // PrivateRoute
 
-
+// This component is the main entry point for the application.
+// It uses the `Routes` component from `react-router-dom` to define the routes for the application.
+// The `Route` components are used to define the individual routes, and the `element` prop is used to specify the component to render for each route.
+// The `ToastContainer` component from `react-toastify` is used to display the toast notifications.
+// The `Taskbar` component is used to display the taskbar at the bottom of the screen.
+// The `PrivateRoute` component is used to protect the routes that require authentication.
+// The `hideLayoutPaths` array is used to specify the paths where the Navbar and Taskbar should not be shown.
+// The `shouldHideLayout` variable is used to determine if the current path is in the list of paths to hide the layout.
 function App() {
 
     const location = useLocation();

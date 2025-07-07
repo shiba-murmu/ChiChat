@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 function UserForm() {
     const [showPassword, setShowPassword] = useState(false);
+
+    
+
+
     return (
         <>
             <form action="" className='flex flex-col gap-6'>
                 <div>
                     {/* <label htmlFor="email">Email</label> */}
-                    <input type="email" name="email" id="email" className='border border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email, phone or username' />
+                    <input type="email" name="text" id="email" className='border border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email or username' />
                 </div>
                 <div className='relative w-60'>
                     {/* <label htmlFor="password">Password</label> */}
@@ -33,10 +37,10 @@ function UserForm() {
                     </span>
                 </div>
                 <div>
-                    <Link to="/Feeds">
+                    {/* <Link to="/Feeds"> */}
                         {/* Here the link tag is added for just testing */}
                         <button type="submit" className='border w-60 h-10 text-md font-normal place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-500 text-white'>Sign in</button>
-                    </Link>
+                    {/* </Link> */}
                 </div>
 
                 <div>
