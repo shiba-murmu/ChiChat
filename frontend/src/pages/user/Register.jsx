@@ -109,6 +109,8 @@ function Register() {
             // Success('Username : ' + response.data.username)
             // Success('Email : ' + response.data.email)
             if (response.status === 201) {
+                localStorage.setItem('accessToken', response.data.access);
+                localStorage.setItem('refreshToken', response.data.refresh);
                 navigate('/feeds');
             }
         } catch (err) {

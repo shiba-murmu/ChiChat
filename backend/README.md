@@ -1,0 +1,2 @@
+-- for refresh the requirements.txt file part.
+-- just run the command : pip freeze > requirement.txt

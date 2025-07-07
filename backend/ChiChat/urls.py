@@ -17,9 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 from .views import index
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index , name='index'), # for database is going right...
     path('api/user/', include('user.urls')),
-]
+    
+    # JWT Authentication 
+    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+] 
