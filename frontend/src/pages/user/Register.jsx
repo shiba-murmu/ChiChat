@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import Failed from '../../components/Toast/Failed';
 import Success from '../../components/Toast/Success';
@@ -9,6 +10,7 @@ import isValidEmail from '../../components/Email_valid/EmailValid';
 import userNameValid from '../../components/UserName_valid/usernameValid';
 
 function Register() {
+    const navigate = useNavigate();
     // Hooks are used to show and hide the password and confirm password.
     // The useState hook is used to manage the state of the showPassword and showConfirmPassword variables.
     // The showPassword variable is used to show and hide the password input field.
@@ -24,12 +26,12 @@ function Register() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        userName: '',
+        first_name: '',
+        last_name: '',
+        username: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        confirm_password: '',
     });
 
 
@@ -45,23 +47,23 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // ****** For all validations **************************************
-        if (!formData.firstName || !formData.lastName || !formData.userName || !formData.email || !formData.password || !formData.confirmPassword) {
+        if (!formData.first_name || !formData.last_name || !formData.username || !formData.email || !formData.password || !formData.confirm_password) {
             Failed('All fields are required');
             return;
         }
         // *****************************************************************
         // ********** UserName Validations *********************************
-        if (formData.userName.length < 3) {
+        if (formData.username.length < 3) {
             Failed('Username must be at least 3 characters long');
             return;
         }
 
-        if (formData.userName.includes(' ')) {
+        if (formData.username.includes(' ')) {
             Failed('Username cannot contain spaces');
             return;
         }
 
-        if (!userNameValid(formData.userName)) {
+        if (!userNameValid(formData.username)) {
             Failed('Invalid username');
             return;
         }
@@ -72,7 +74,7 @@ function Register() {
             return;
         }
 
-        if (formData.password !== formData.confirmPassword) {
+        if (formData.password !== formData.confirm_password) {
             Failed('Passwords do not match');
             return;
         }
@@ -91,23 +93,41 @@ function Register() {
         if (!isValidEmail(formData.email)) {
             Failed('Invalid email address');
             return;
-        }  
+        }
         // *****************************************************************
 
         console.log(formData);
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/user/register/', formData , {
+            const response = await axios.post('http://127.0.0.1:8000/api/user/register/', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            console.log(response.data);
-            console.log(response.data.message);
-            Success(response.data.message);
-            
-        } catch (error) {
-            console.error(error);
+            console.log('✅ Hello world');
+            Success(response.data.message);  // custom toast or alert
+            // Success('Username : ' + response.data.username)
+            // Success('Email : ' + response.data.email)
+            if (response.status === 201) {
+                navigate('/feeds');
+            }
+        } catch (err) {
+            // 👇 Extract the custom error from backend
+            const errorData = err.response?.data?.error;
+
+            // 👇 Loop through all error fields and show them
+            if (errorData && typeof errorData === 'object') {
+                for (let field in errorData) {
+                    const messages = errorData[field];
+                    if (Array.isArray(messages)) {
+                        messages.forEach(msg => {
+                            Failed(`${field}: ${msg}`);  // You can use toast here instead of alert
+                        });
+                    }
+                }
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
         }
     };
 
@@ -124,13 +144,13 @@ function Register() {
                         <p>to chat with your friends</p>
                     </div>
                     <div>
-                        <input type="text" name="firstName" onChange={handleChange} id="firstName" className='rounded border pl-3 border-gray-400 focus:outline-gray-500 h-10 w-60' placeholder='First name' />
+                        <input type="text" name="first_name" onChange={handleChange} id="firstName" className='rounded border pl-3 border-gray-400 focus:outline-gray-500 h-10 w-60' placeholder='First name' />
                     </div>
                     <div>
-                        <input type="text" name="lastName" onChange={handleChange} id="lastName" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Last name' />
+                        <input type="text" name="last_name" onChange={handleChange} id="lastName" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Last name' />
                     </div>
                     <div className='flex flex-col'>
-                        <input type="text" name="userName" onChange={handleChange} id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' /> 
+                        <input type="text" name="username" onChange={handleChange} id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' />
                     </div>
                     <div>
                         <input type="email" name="email" onChange={handleChange} id="email" className='border  border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email address' />
@@ -165,7 +185,7 @@ function Register() {
                         </span>
                     </div>
                     <div className='relative w-60'>
-                        <input type={showPassword ? "text" : "password"} name="confirmPassword" onChange={handleChange} id="confirmPassword" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Confirm Password' />
+                        <input type={showPassword ? "text" : "password"} name="confirm_password" onChange={handleChange} id="confirmPassword" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Confirm Password' />
                         <span
                             onClick={() => setShowPassword(!showPassword)}
                             className="absolute right-3 top-2.5 cursor-pointer text-gray-500 hover:text-gray-800"
@@ -195,7 +215,7 @@ function Register() {
                 <div className='md:relative flex flex-col p-10 gap-3'>
                     <hr className='border-gray-400' />
                     <p className='text-center'>Or sign up with</p>
-                    <div className='flex justify-center items-center gap-3'> 
+                    <div className='flex justify-center items-center gap-3'>
                         <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="google" className='w-10 h-10 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 hover:coursor-pointer' />
                         <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="facebook" className='w-10 h-10 hover:scale-110 hover: transition ease-in-out delay-150 hover:-translate-y-1  duration-300 hover:coursor-pointer' />
                     </div>

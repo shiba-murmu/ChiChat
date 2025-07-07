@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'corsheaders', # added cores headers
+    'rest_framework', # added rest framework
+    'corsheaders', # added cores headers
+    'user' # custom apps
+    # 'rest_framework.authtoken',  # ✅ Add this line
+     
 ]
 
 MIDDLEWARE = [
