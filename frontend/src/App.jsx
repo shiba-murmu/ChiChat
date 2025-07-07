@@ -13,6 +13,9 @@ import Taskbar from './components/taskbar/Taskbar'
 import Notifications from './pages/contents/Notifications'
 import Messages from './pages/user/Messages'
 
+import PrivateRoute from './components/Lock/PrivateRoutes';  // PrivateRoute
+
+
 function App() {
 
     const location = useLocation();
@@ -35,12 +38,12 @@ function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/account" element={<Account />} />
-                <Route path="/otheraccount" element={<OtherAccount />} />
-                <Route path="/feeds" element={<Feeds />} />
-                <Route path="/chat" element={<Chat />} />
-                <Route path="/notifications" element={<Notifications />} />
-                <Route path="/messages" element={<Messages />} />
+                <Route path="/account" element={<PrivateRoute><Account /> </PrivateRoute>} />
+                <Route path="/otheraccount" element={<PrivateRoute><OtherAccount /></PrivateRoute>} />
+                <Route path="/feeds" element={<PrivateRoute><Feeds /></PrivateRoute>} />
+                <Route path="/chat" element={<PrivateRoute><Chat /></PrivateRoute>} />
+                <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} />
+                <Route path="/messages" element={<PrivateRoute><Messages /></PrivateRoute>} />
                 {/* <Route path="/navbar" element={<Navbar />} /> */}
             </Routes>
             {!shouldHideLayout && <Taskbar />}
