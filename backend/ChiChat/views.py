@@ -1,10 +1,13 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 from django.http import HttpResponse
-
-
-class register(APIView):
-    def get(self, request):
-        # write your dummy data : 
-        return Response({"message": "Hello, world. You're at the ChiChat index."}, status=status.HTTP_200_OK)
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+def register(request):
+    if request.method == "POST":
+        print('Response is Sends back to the frontend')
+        return JsonResponse({"message": "success"})
+    return JsonResponse({"message": "error"})
+        
+def index(request):
+    return HttpResponse("hello")

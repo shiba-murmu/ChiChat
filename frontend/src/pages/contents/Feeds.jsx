@@ -24,7 +24,7 @@ function FeedsCard() {
                     <div className='mt-2'>
                         <span className='text-sm'>This is a caption for the post.</span>
                     </div>
-                    <div className='mt-2'>
+                    <div className='mb-5'>
                         <span className='text-xs text-gray-500'>Posted on: {new Date().toLocaleDateString()}</span>
                     </div>
                 </div>
