@@ -28,7 +28,7 @@ function Otp_UI() {
     return (
         <>
             <div className='flex justify-center items-center h-screen absolute w-full z-10 background-dark'>
-                <div className='flex flex-col gap-1 p-10 w-80 bg-blue-100 rounded-2xl'>
+                <div className='flex flex-col gap-1 p-10 w-80 bg-blue-100 rounded-xl'>
                     <form action="" className='flex flex-col gap-2'>
                         <div className='flex justify-center items-center gap-2'>
                             <span className='text-2xl text-blue-700 font-bold'>{sentHeading}</span>
@@ -46,9 +46,9 @@ function Otp_UI() {
                             <input type="number" id="otp" className=' border border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' />
                         </div>
                         <div className='flex justify-center items-center gap-3'>
-                            <button type='submit' className='border p-2 rounded bg-blue-500 text-white text-sm'>Confirm</button>
-                            <button type='submit' className='border p-2 rounded bg-amber-500 text-white text-sm'>Resend</button>
-                            <button type='submit' className='border p-2 rounded  bg-red-500 text-white text-sm'>Cancel</button>
+                            <button type='submit' className='border p-2 rounded hover:cursor-pointer  bg-blue-500 text-white text-sm'>Confirm</button>
+                            <button type='submit' className='border p-2 hover:cursor-pointer rounded bg-amber-500 text-white text-sm'>Resend</button>
+                            <button type='submit' className='border hover:cursor-pointer  p-2 rounded  bg-red-500 text-white text-sm'>Cancel</button>
                         </div>
                     </form>
                 </div>
