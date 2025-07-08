@@ -14,6 +14,8 @@ import Notifications from './pages/contents/Notifications'
 import Messages from './pages/user/Messages'
 
 import PrivateRoute from './components/Lock/PrivateRoutes';  // PrivateRoute
+import PublicRoutes from './components/Lock/PublicRoutes';  // PublicRoutes
+
 
 // This component is the main entry point for the application.
 // It uses the `Routes` component from `react-router-dom` to define the routes for the application.
@@ -43,8 +45,11 @@ function App() {
         <>
            < ToastContainer position='top-right' autoClose={3000} />  
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                {/* public routes */}
+                <Route path="/" element={<PublicRoutes><Login /></PublicRoutes>} />
+                <Route path="/register" element={<PublicRoutes><Register /> </PublicRoutes>} />
+
+                {/* private routes */}
                 <Route path="/account" element={<PrivateRoute><Account /> </PrivateRoute>} />
                 <Route path="/otheraccount" element={<PrivateRoute><OtherAccount /></PrivateRoute>} />
                 <Route path="/feeds" element={<PrivateRoute><Feeds /></PrivateRoute>} />

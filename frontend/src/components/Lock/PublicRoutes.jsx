@@ -5,7 +5,7 @@ function PublicRoutes({ children }) {
     // This routes help us to check if the user is authenticated or not
     // if the user is already authenticated then it will 
     // redirect the user to the account page... even manually typing the logout urls.
-  return  !isAuthenticated() ?  <Navigate to="/account" /> : children;
+  return  !isAuthenticated() ? children : <Navigate to="/account" /> ;
   
 }
 
