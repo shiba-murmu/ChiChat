@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom'
 import Failed from '../../components/Toast/Failed'
 import isValidEmail from '../../components/Email_valid/EmailValid'
 import userNameValid from '../../components/UserName_valid/usernameValid';
+/// for development purpose ,..
+import Otp_UI from './Otp_UI'
+
 function UserForm() {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
@@ -135,6 +138,7 @@ function Login() {
      */
     return (
         <>
+            <Otp_UI />
             <div className='flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center gap-3'>
                     <div className='mb-3 style-font'>
