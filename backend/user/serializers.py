@@ -1,6 +1,37 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-# Define your serializers here.
+from django.contrib.auth import authenticate
+
+class UserLoginSerializer(serializers.Serializer):
+    text = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        text = data.get('text')
+        password = data.get('password')
+
+        if not text or not password:
+            raise serializers.ValidationError("Please provide both username or email and password.")
+
+        if '@' in text:
+            user_obj = User.objects.filter(email=text).first()
+            if not user_obj:
+                raise serializers.ValidationError("User with this email does not exist.")
+            username = user_obj.username
+        else:
+            username = text
+
+        user = authenticate(username=username, password=password)
+        if not user:
+            raise serializers.ValidationError("Invalid credentials.")
+        if not user.is_active:
+            raise serializers.ValidationError("User is not active.")
+
+        data['user'] = user
+        return data
+
+
+
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)

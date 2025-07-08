@@ -96,7 +96,6 @@ function Register() {
         }
         // *****************************************************************
 
-        console.log(formData);
 
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/user/register/', formData, {
@@ -104,10 +103,7 @@ function Register() {
                     'Content-Type': 'application/json',
                 },
             });
-            console.log('✅ Hello world');
             Success(response.data.message);  // custom toast or alert
-            // Success('Username : ' + response.data.username)
-            // Success('Email : ' + response.data.email)
             if (response.status === 201) {
                 localStorage.setItem('accessToken', response.data.access);
                 localStorage.setItem('refreshToken', response.data.refresh);

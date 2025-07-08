@@ -1,23 +1,80 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
+import Success from '../../components/Toast/Success'
+import { useNavigate } from 'react-router-dom'
+import Failed from '../../components/Toast/Failed'
+import isValidEmail from '../../components/Email_valid/EmailValid'
+import userNameValid from '../../components/UserName_valid/usernameValid';
 function UserForm() {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        text: "",
+        password: "",
+    })
 
-    
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }))
+    }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+
+        if (!formData.text || !formData.password) {
+            Failed("All fields are required");
+            return;
+        }
+
+        if (formData.text != Number)
+        // This number value will change we want to try to login with number
+        {
+
+            if (isValidEmail(formData.text) || userNameValid(formData.text)) {
+                try {
+                    const response = await axios.post("http://127.0.0.1:8000/api/user/login/", formData , {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    // Success(response.data.message);
+                    // console.log(response);
+                    if (response.status === 200) {
+                        Success("Login successful");
+                        localStorage.setItem("accessToken", response.data.access);
+                        localStorage.setItem("refreshToken", response.data.refresh);
+                        navigate("/account");
+                        return;
+                    }
+                    console.log(response);
+                } catch (error) {
+                    Failed("Login failed");
+                    return;
+                }
+            } else {
+                Failed("Invalid email or username");
+                return;
+            }
+        }
+    }
 
     return (
         <>
-            <form action="" className='flex flex-col gap-6'>
+            <form action="" onSubmit={handleSubmit} className='flex flex-col gap-6'>
                 <div>
                     {/* <label htmlFor="email">Email</label> */}
-                    <input type="email" name="text" id="email" className='border border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email or username' />
+                    <input type="email" name="text" id="email" className='border border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email or username' onChange={handleChange} />
                 </div>
                 <div className='relative w-60'>
                     {/* <label htmlFor="password">Password</label> */}
 
-                    <input type={showPassword ? "text" : "password"} name="password" id="password" className='rounded border border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Password' />
+                    <input type={showPassword ? "text" : "password"} name="password" id="password" className='rounded border border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Password' onChange={handleChange} />
                     <span
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-2.5 cursor-pointer text-gray-500 hover:text-gray-800"
@@ -38,8 +95,8 @@ function UserForm() {
                 </div>
                 <div>
                     {/* <Link to="/Feeds"> */}
-                        {/* Here the link tag is added for just testing */}
-                        <button type="submit" className='border w-60 h-10 text-md font-normal place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-500 text-white'>Sign in</button>
+                    {/* Here the link tag is added for just testing */}
+                    <button type="submit" onClick={handleSubmit} className='border w-60 h-10 text-md font-normal place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-500 text-white'>Sign in</button>
                     {/* </Link> */}
                 </div>
 
