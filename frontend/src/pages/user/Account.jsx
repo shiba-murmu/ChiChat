@@ -105,8 +105,13 @@ function UserName() {
 
 
 function Account() {
+    /**
+     * This is the main function here : 
+     * @returns {JSX.Element} JSX element representing the account page.
+     */
     const [isOpen, setIsOpen] = useState(false);
-
+    const [profileName, setProfileName] = useState('No name');
+    const [Username , setUsername] = useState('No username');
     const toggleDrawer = () => setIsOpen(!isOpen);
 
     return (
@@ -139,7 +144,7 @@ function Account() {
                     </div>
                     <div className='w-[70%] md:w-[100%]'>
                         <div className='mb-2 md:text-center'>
-                            <span className='font-bold text-md'>Shiba Murmu</span>
+                            <span className='font-bold text-md'>{profileName}</span>
                         </div>
                         <div className='flex gap-5 md:justify-center'>
                             <div className='flex flex-col'>
@@ -159,7 +164,7 @@ function Account() {
                 </div>
 
                 <div className='flex justify-start md:justify-center'>
-                    <p className='text-sm px-3 text-gray-500'>@shibamurmu_</p>
+                    <p className='text-sm px-3 text-gray-500'>@{Username}</p>
                 </div>
                 <div className='flex justify-start md:justify-center'>
                     <p className='text-sm  px-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, quos</p>
@@ -167,7 +172,7 @@ function Account() {
 
                 {/* <hr /> */}
                 <div className='flex gap-3 p-4 md:justify-center'>
-                    <button className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200'>Edit Profile</button>
+                    <button className='bg-blue-500 text-white px-4 hover:cursor-pointer py-2 rounded hover:bg-blue-600 transition-colors duration-200'>Edit Profile</button>
                     <button className='bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors duration-200'>Settings</button>
                 </div>
             </div>

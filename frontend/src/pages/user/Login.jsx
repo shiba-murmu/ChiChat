@@ -13,6 +13,10 @@ import userNameValid from '../../components/UserName_valid/usernameValid';
 function UserForm() {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
+
+    // For sign in desable button
+    const [isWaiting, setIsWaiting] = useState(false);
+
     const [formData, setFormData] = useState({
         text: "",
         password: "",
@@ -29,19 +33,23 @@ function UserForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setIsWaiting(true);
+
 
         if (!formData.text || !formData.password) {
             Failed("All fields are required");
             return;
         }
+        
 
         if (formData.text != Number)
         // This number value will change we want to try to login with number
         {
 
+
             if (isValidEmail(formData.text) || userNameValid(formData.text)) {
                 try {
-                    const response = await axios.post("http://127.0.0.1:8000/api/user/login/", formData , {
+                    const response = await axios.post("http://127.0.0.1:8000/api/user/login/", formData, {
                         headers: {
                             'Content-Type': 'application/json',
                         },
@@ -55,16 +63,19 @@ function UserForm() {
                         navigate("/account");
                         return;
                     }
-                    console.log(response);
+                    // console.log(response);
                 } catch (error) {
                     Failed("Login failed");
+                    setIsWaiting(false);
                     return;
                 }
             } else {
                 Failed("Invalid email or username");
+                setIsWaiting(false);
                 return;
             }
         }
+        isWaiting(false);
     }
 
     return (
@@ -99,7 +110,11 @@ function UserForm() {
                 <div>
                     {/* <Link to="/Feeds"> */}
                     {/* Here the link tag is added for just testing */}
-                    <button type="submit" onClick={handleSubmit} className='border w-60 h-10 text-md font-normal place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-500 text-white'>Sign in</button>
+                    <button type="submit" onClick={handleSubmit} desabled={isWaiting} className='border w-60 h-10 text-md font-normal place-content-center hover:bg-blue-600 hover:text-white hover:cursor-pointer rounded bg-blue-500 text-white'>
+                        {
+                            isWaiting ? 'Logging in...' : 'Log in'
+                        }
+                        </button>
                     {/* </Link> */}
                 </div>
 
