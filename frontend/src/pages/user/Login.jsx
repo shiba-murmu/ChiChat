@@ -38,6 +38,7 @@ function UserForm() {
 
         if (!formData.text || !formData.password) {
             Failed("All fields are required");
+            setIsWaiting(false);
             return;
         }
         
