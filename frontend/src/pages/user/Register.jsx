@@ -8,7 +8,7 @@ import Failed from '../../components/Toast/Failed';
 import Success from '../../components/Toast/Success';
 import isValidEmail from '../../components/Email_valid/EmailValid';
 import userNameValid from '../../components/UserName_valid/usernameValid';
-
+import Otp_UI from './Otp_UI'
 function Register() {
     const navigate = useNavigate();
     // Hooks are used to show and hide the password and confirm password.
@@ -24,6 +24,20 @@ function Register() {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [OtpVerify, setOtpVerify] = useState(false);
+
+    const [emailSent_to_verify, setEmailSent_to_verify] = useState('');
+
+    const [loading, setLoading] = useState(false); 
+
+
+
+    // /////////////////////////////////////////////////////////////////////////////////////////////////
+    // leave it for now 
+    // For username and email verifications in the backend
+    const [usernameSent_to_verify, setUsernameSent_to_verify] = useState('Username must be unique');
+    const [emailVerify_unique, setEmailVerify_unique] = useState('Email must be unique');
+    // /////////////////////////////////////////////////////////////////////////////////////////////////
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -43,9 +57,14 @@ function Register() {
         }));
     };
 
+   const handlePopup_cancel_Ui = () => {
+       setOtpVerify(false);
+   }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // setLoading(true);
         // ****** For all validations **************************************
         if (!formData.first_name || !formData.last_name || !formData.username || !formData.email || !formData.password || !formData.confirm_password) {
             Failed('All fields are required');
@@ -96,47 +115,73 @@ function Register() {
         }
         // *****************************************************************
 
-
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/api/user/register/', formData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            Success(response.data.message);  // custom toast or alert
-            if (response.status === 201) {
-                localStorage.setItem('accessToken', response.data.access);
-                localStorage.setItem('refreshToken', response.data.refresh);
-                navigate('/feeds');
-            }
-        } catch (err) {
-            // 👇 Extract the custom error from backend
-            const errorData = err.response?.data?.error;
-
-            // 👇 Loop through all error fields and show them
-            if (errorData && typeof errorData === 'object') {
-                for (let field in errorData) {
-                    const messages = errorData[field];
-                    if (Array.isArray(messages)) {
-                        messages.forEach(msg => {
-                            Failed(`${field}: ${msg}`);  // You can use toast here instead of alert
-                        });
-                    }
+        setLoading(true); // this will sent the signup button true means desable to touch the buttons.
+        
+        if (formData.username && formData.email && formData.password && formData.confirm_password , formData.first_name && formData.last_name) {
+            setEmailSent_to_verify(formData.email); // email sending to the chil component...
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/user/send_otp/', formData, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                setOtpVerify(true);
+                if (response.status === 200) {
+                    Success(response.data.message);
+                    
                 }
-            } else {
-                alert("Something went wrong. Please try again.");
+            } catch (err) {
+                // 👇 Extract the custom error from backend
+                const errorData = err.response?.data?.error;
+                Failed(errorData);
             }
         }
+
+
+        //     try {
+        //         const response = await axios.post('http://127.0.0.1:8000/api/user/register/', formData, {
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //         });
+        //         Success(response.data.message);  // custom toast or alert
+        //         if (response.status === 201) {
+        //             localStorage.setItem('accessToken', response.data.access);
+        //             localStorage.setItem('refreshToken', response.data.refresh);
+        //             navigate('/feeds');
+        //         }
+        //     } catch (err) {
+        //         // 👇 Extract the custom error from backend
+        //         const errorData = err.response?.data?.error;
+
+        //         // 👇 Loop through all error fields and show them
+        //         if (errorData && typeof errorData === 'object') {
+        //             for (let field in errorData) {
+        //                 const messages = errorData[field];
+        //                 if (Array.isArray(messages)) {
+        //                     messages.forEach(msg => {
+        //                         Failed(`${field}: ${msg}`);  // You can use toast here instead of alert
+        //                     });
+        //                 }
+        //             }
+        //         } else {
+        //             alert("Something went wrong. Please try again.");
+        //         }
+        //     }
+        setLoading(false);
+
     };
 
     return (
-        <>
+        <> {
+            OtpVerify ? <Otp_UI email={emailSent_to_verify} 
+                username={formData.username} first_name={formData.first_name} last_name={formData.last_name} password={formData.password} confirm_password={formData.confirm_password} onCancel={handlePopup_cancel_Ui} /> : ''}
             {/* User registration form to create the account of the user. */}
             <div className='flex justify-center flex-col items-center h-[auto]  w-full'>
                 <div className='flex justify-center items-center '>
                     <img src="https://img.icons8.com/color/48/000000/chat.png" alt="chat-icon" className='w-20 m-0 h-20' />
                 </div>
-                <form action="" onSubmit={handleSubmit} className='flex flex-col gap-5'>
+                <form action="" onSubmit={handleSubmit} className='flex flex-col gap-4'>
                     <div className='flex justify-center flex-col items-center'>
                         <p>Sign up to your <span className='font-bold'>ChiChat</span> <span className='font-bold text-blue-500'>account</span> </p>
                         <p>to chat with your friends</p>
@@ -149,9 +194,13 @@ function Register() {
                     </div>
                     <div className='flex flex-col'>
                         <input type="text" name="username" onChange={handleChange} id="username" className='rounded border  border-gray-400 focus:outline-gray-500 h-10 w-60 pl-3' placeholder='Username' />
+                        {/* This is the error message to check if the username is unique or not */}
+                        <span className='text-gray-600' style={{ fontSize: '13px'}}>{usernameSent_to_verify}</span>
                     </div>
-                    <div>
+                    <div className='flex flex-col'>
                         <input type="email" name="email" onChange={handleChange} id="email" className='border  border-gray-400 focus:outline-gray-500 rounded w-60 h-10 pl-3' placeholder='Email address' />
+                        {/* This is the error message to check if the email is unique or not */}
+                        <span className='text-gray-600' style={{ fontSize: '13px'}}>{emailVerify_unique}</span>
                     </div>
                     {/* Here code used for showing and hiding the password. In the main-container 
                         div the relative class is added first to show the eye icon inside the input field. Also the onClick function is used to show and hide the password. Added hooks are used to show and hide the password.*/}
@@ -203,7 +252,8 @@ function Register() {
                         </span>
                     </div>
                     <div>
-                        <button type="submit" className='bg-blue-500 text-white rounded h-10 w-60 hover:bg-blue-600'>Sign up</button>
+                        <button type="submit" disabled={loading} className='bg-blue-500 text-white rounded h-10 w-60 hover:bg-blue-600 hover:cursor-pointer'>
+                            {loading ? 'Signing up...' : 'Sign up'}</button>
                     </div>
                     <div>
                         <p className='text-center'>Already have an account? <Link to="/" className='text-blue-500 font-extrabold'>Login</Link></p>

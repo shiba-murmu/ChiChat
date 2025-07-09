@@ -8,7 +8,7 @@ import Failed from '../../components/Toast/Failed'
 import isValidEmail from '../../components/Email_valid/EmailValid'
 import userNameValid from '../../components/UserName_valid/usernameValid';
 /// for development purpose ,..
-import Otp_UI from './Otp_UI'
+
 
 function UserForm() {
     const [showPassword, setShowPassword] = useState(false);
@@ -138,7 +138,7 @@ function Login() {
      */
     return (
         <>
-            <Otp_UI />
+            {/* <Otp_UI /> */}
             <div className='flex justify-center items-center h-screen'>
                 <div className='flex flex-col justify-center items-center gap-3'>
                     <div className='mb-3 style-font'>

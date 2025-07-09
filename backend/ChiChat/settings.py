@@ -55,6 +55,18 @@ REST_FRAMEWORK = {
 
 # ###################################################################
 
+# #################################################################
+#  GMAIL SMTP SETTINGS HERE ADDED.
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'chichat.socialmedia@gmail.com'
+EMAIL_HOST_PASSWORD = 'hulcdjfovuxwbmar'  # not your Gmail password!
+
+# #################################################################
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # added cores headers
     'django.middleware.security.SecurityMiddleware',
