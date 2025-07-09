@@ -196,7 +196,7 @@ function Account() {
                 {/* <hr /> */}
                 <div className='flex gap-3 p-4 md:justify-center'>
                     <button className='bg-blue-500 text-white px-4 hover:cursor-pointer py-2 rounded hover:bg-blue-600 transition-colors duration-200'>Edit Profile</button>
-                    <button className='bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors duration-200'>Settings</button>
+                    <button className='bg-gray-200 text-gray-700 px-4 py-2 hover:cursor-pointer rounded hover:bg-gray-300 transition-colors duration-200'>Settings</button>
                 </div>
             </div>
 
@@ -215,7 +215,7 @@ function Account() {
                     }`}
             >
                 <div className="px-4 py-4 flex justify-between bg-gray-100 items-center shadow">
-                    <h2 className="text-lg font-semibold">Shiba Murmu</h2>
+                    <h2 className="text-lg font-semibold">{profileName}</h2>
                     <button onClick={toggleDrawer} className="text-2xl ">
                         <DrawerHideIcons />
                     </button>
