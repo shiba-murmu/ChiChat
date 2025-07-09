@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import { useState } from 'react';
+import axios from 'axios';
 import './account.css';
 import { useNavigate } from 'react-router-dom';
 import Logout from '../../components/Logout/Logout';
+
+import Failed from '../../components/Toast/Failed';
+import Success from '../../components/Toast/Success';
 
 function DrawerOptions({ toggleDrawer }) {
     /**
@@ -87,7 +91,7 @@ function UserIcon() {
 }
 
 
-function UserName() {
+function UserName({name}) {
     /**
      * User name component.
      * 
@@ -97,7 +101,7 @@ function UserName() {
         <>
             <div className='flex flex-col justify-center items-start pl-2'>
                 {/* User name and username */}
-                <span className='font-bold text-md'>Shiba Murmu</span>
+                <span className='font-bold text-md'>{name}</span>
             </div>
         </>
     )
@@ -114,6 +118,25 @@ function Account() {
     const [Username , setUsername] = useState('No username');
     const toggleDrawer = () => setIsOpen(!isOpen);
 
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            axios.get('http://127.0.0.1:8000/api/user/profile/', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                setProfileName(response.data.first_name + ' ' + response.data.last_name);
+                setUsername(response.data.username);
+            })
+            .catch(error => {
+                console.error(error);
+                Failed('Error fetching user details.');
+            });
+        }
+    }, []);
+
     return (
         <>
             <div className='min-h-screen w-full max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden'>
@@ -121,7 +144,7 @@ function Account() {
                 <div className='flex justify-between items-center p-1'>
                     <div className='flex items-center'>
                         <UserIcon />
-                        <UserName />
+                        <UserName name={profileName} />
                     </div>
                     <button
                         onClick={toggleDrawer}

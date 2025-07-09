@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.urls import path , include
 from .views import register , login
-from .views import send_otp, verify_otp
+from .views import send_otp, verify_otp , get_user_profile
 
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path('verify_otp/', verify_otp),
     path('register/', register, name='register'),
     path('login/', login , name='login'),
+    path('profile/' , get_user_profile)
 ]
